@@ -45,7 +45,7 @@ class HeroBehavior extends NPCBehavior {
 			if (random_mob) {
 				// chase with lowest priority
 				Debug.Log("hero: choosing new random target");
-				FoundNewTarget(random_mob, 3);
+				FoundNewTarget(random_mob, 4);
 			}
 		}
 		super.Update();
