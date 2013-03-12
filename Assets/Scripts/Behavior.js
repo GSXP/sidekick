@@ -48,6 +48,11 @@ function Update() {
 	myBehavior.Update();
 }
 
+// fire
+function FireSpell() {
+	myBehavior.FireSpell();
+}
+
 // Behavior Interface. Anything that can attack or be attacked should implement this
 private class IBehavior {
 	// Classes don't seem to have access to "gameObject" so you'll have to pass it in
@@ -68,4 +73,7 @@ private class IBehavior {
 	
 	// And here's access to the Update Function
 	function Update() {}
+	
+	// fire
+	function FireSpell() {}
 }

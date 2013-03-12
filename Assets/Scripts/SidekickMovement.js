@@ -22,6 +22,11 @@ function clearTarget() {
 
 function Update () {
 	
+	// left click: temp set all mobs aflame
+	if (Input.GetMouseButtonDown(0)) {
+		GameObject.Find("Mob").GetComponent(Behavior).FireSpell();
+	}
+	
 	// hold right mouse to move
 	if (Input.GetMouseButtonDown(1)) {
 		rightMouseDown = true;

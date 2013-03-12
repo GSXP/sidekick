@@ -3,6 +3,9 @@
 // Mob's implementation of behavior
 class MobBehavior extends NPCBehavior {
 	
+	// special states
+	var onFire : boolean = false;
+
 	function MobBehavior(go : GameObject) {
 		super(go);
 		// Used this to spice things up while sight/patrolling is unimplemented
@@ -62,7 +65,37 @@ class MobBehavior extends NPCBehavior {
 		// See if hero or sidekick is visible
 		CheckAggroRange();
 		
-		// NPCBehavior will move me closer to my target if I have one
-		super.Update();
+		// on fire behavior
+		if (onFire) {
+		
+			// run away from hero
+			var HeroVector = (GameObject.Find("Hero").transform.position - gameObject.transform.position);
+			var angle = Mathf.Atan(HeroVector.y / HeroVector.x) + Mathf.PI;
+			if(HeroVector.x < 0) {
+				angle = angle + Mathf.PI;
+			}
+			angle = angle + (Random.value - 0.5) * Mathf.PI;
+			super.movement.setTarget(gameObject.transform.position + Vector3(Mathf.Cos(angle) * 2, Mathf.Sin(angle) * 2, 0));
+		}
+		
+		// normal behavior
+		else {
+		
+			// NPCBehavior will move me closer to my target if I have one
+			super.Update();
+		}
 	}
+	
+	function FireSpell() {
+		if (onFire) {
+			gameObject.renderer.material.color = Color.magenta;
+			onFire = false;
+		}
+		else {
+			// visibily aflame
+			gameObject.renderer.material.color = Color.yellow;
+			onFire = true;
+		}
+	}
+
 }
