@@ -38,6 +38,16 @@ class HeroBehavior extends NPCBehavior {
 	}
 	
 	function Update() {
+		// temp: pick a target at random
+		if (super.currentTarget == null) {
+			var random_mob = GameObject.Find("Mob");
+			// make sure one exists
+			if (random_mob) {
+				// chase with lowest priority
+				Debug.Log("hero: choosing new random target");
+				FoundNewTarget(random_mob, 3);
+			}
+		}
 		super.Update();
 	}
 }
