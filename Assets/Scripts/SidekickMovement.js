@@ -21,6 +21,8 @@ function clearTarget() {
 }
 
 function Update () {
+	
+	// hold right mouse to move
 	if (Input.GetMouseButtonDown(1)) {
 		rightMouseDown = true;
 	}
