@@ -24,6 +24,8 @@ class NPCBehavior extends IBehavior {
 		} else {
 			// Otherwise I'M DEAD!!!
 			AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
+			// Tell the Room I'm a goner
+			super.currentRoom.GetComponent(RoomController).OnTriggerExit(gameObject.collider);
 			GameObject.Destroy(gameObject);
 		}
 	}

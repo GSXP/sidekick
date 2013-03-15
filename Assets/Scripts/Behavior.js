@@ -11,7 +11,7 @@ var hurtSound : AudioClip;
 var dieSound : AudioClip;
 
 // Maps an implementation based on the object type
-function Start() {
+function Awake() {
 	var whoami : String = gameObject.name;
 	if (whoami == "Hero") {
 		myBehavior = new HeroBehavior(gameObject);
@@ -26,6 +26,19 @@ function Start() {
 	
 	myBehavior.dieSound = dieSound;
 	myBehavior.hurtSound = hurtSound;
+}
+
+
+function Start() {
+	// Find the room I'm in
+	var rooms : RoomController[] = GameObject.FindObjectsOfType(RoomController);
+	for (var room : RoomController in rooms) {
+		if (room.gameObject.collider.bounds.Contains(gameObject.transform.position)) {
+			room.OnTriggerEnter(gameObject.collider);
+			return;
+		}
+	}
+	Debug.Log("WARNING! " + gameObject + " is not in any room!");
 }
 
 // If you got hit
@@ -53,15 +66,29 @@ function FireSpell() {
 	myBehavior.FireSpell();
 }
 
+function setRoom(room : GameObject) {
+	myBehavior.setRoom(room);
+}
+
+function getRoom() {
+	return myBehavior.currentRoom;
+}
+
 // Behavior Interface. Anything that can attack or be attacked should implement this
 private class IBehavior {
 	// Classes don't seem to have access to "gameObject" so you'll have to pass it in
 	protected var gameObject : GameObject;
 	var hurtSound : AudioClip;
 	var dieSound : AudioClip;
+	var currentRoom : GameObject;
 	
 	function IBehavior(go : GameObject) {
 		gameObject = go;
+	}
+	
+	// Can be extended for special behavior upon entering a room
+	function setRoom(room : GameObject) {
+		currentRoom = room;
 	}
 	
 	// Hooks for Combat
