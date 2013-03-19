@@ -23,10 +23,7 @@ class NPCBehavior extends IBehavior {
 			AudioSource.PlayClipAtPoint(hurtSound, Camera.main.transform.position);
 		} else {
 			// Otherwise I'M DEAD!!!
-			AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
-			// Tell the Room I'm a goner
-			super.currentRoom.GetComponent(RoomController).OnTriggerExit(gameObject.collider);
-			GameObject.Destroy(gameObject);
+			die();
 		}
 	}
 	
@@ -53,4 +50,17 @@ class NPCBehavior extends IBehavior {
 			movement.setTarget(currentTarget.transform.position);
 		}
 	}
+	
+	//Whenever the character or monster dies, however he dies, this function is called.
+  	//It destroys the character/monster from the screen, and, depending on how it's inherited, 
+  	//can do other things, like leave behind treasures that can be collected.
+  	function die() {
+    	AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
+		// Tell the Room I'm a goner
+		super.currentRoom.GetComponent(RoomController).OnTriggerExit(gameObject.collider);
+		if(gameObject != null) {
+        	GameObject.Destroy(gameObject);
+    	}
+	}
+
 }
