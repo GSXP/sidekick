@@ -26,6 +26,22 @@ class NPCBehavior extends IBehavior {
 			die();
 		}
 	}
+
+	function CheckSpellRange(target : Vector3, spellType : int) {
+		var distance = Mathf.Sqrt( (target.x - gameObject.transform.position.x)*(target.x - gameObject.transform.position.x) + (target.y - gameObject.transform.position.y)*(target.y - gameObject.transform.position.y) );
+		
+		if(stats.getSpellRange() >= distance) { 
+			// in range!
+			if (spellType == 0)
+				FireSpell();
+			else if (spellType == 1)
+				IceSpell();
+		}
+		else {
+			// nothing to see here . .
+			return;
+		}
+	}
 	
 	function TargetDead() {
 		// Don't have a target
@@ -41,6 +57,13 @@ class NPCBehavior extends IBehavior {
 		currentTarget = newTarget;
 		targetPriority = priority;
 		combat.target = currentTarget;
+	}
+	
+	function ClearTarget() {
+		currentTarget = null;
+		targetPriority = 4;
+		combat.target = currentTarget;
+		movement.clearTarget();
 	}
 	
 	// Makes sure the Movement Componenet always has the most current position of the target

@@ -29,6 +29,7 @@ private var MoveSpeed : float; // How fast it moves
 private var BaseMoveSpeed : float; // Base speed
 private var SightRange : float; // Visible forward distance
 private var BaseSightRange : float; // Base value of the above
+private var SpellRange : float; // Range of spell casting
 private var DamageRatio : float; // 1.0 = Normal, 0.5 = Takes Half Damage, 2.0 = Takes Double Damage
 
 private function loadStats(maxHP : int, baseATK : int, baseATKSPD : float, baseMOVSPD : float, baseSight : float) {
@@ -44,6 +45,7 @@ private function loadStats(maxHP : int, baseATK : int, baseATKSPD : float, baseM
 		AttackRange = 2; // Minimum to attack or be attacked by Hero (because he's so big)
 		BaseSightRange = baseSight;
 		SightRange = baseSight;
+		SpellRange = baseSight;
 }
 
 // Getters
@@ -94,6 +96,11 @@ function getSightRange() {
 function getBaseSightRange() {
 	return BaseSightRange;
 }
+
+function getSpellRange() {
+	return SpellRange;
+}
+
 
 // Modifiers
 function hurtHealth(damage : int) {
