@@ -127,13 +127,13 @@ class MobBehavior extends NPCBehavior {
 
 	function die() {
 	    var pos = gameObject.transform.position;
-	    super.die();
 	    dropTreasure(pos);
+		super.die();
 	}
   
 	function dropTreasure(pos : Vector3) {
-	    var treasure : GameObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-	    treasure.transform.position = Vector3(pos.x, pos.y, pos.z);
+		var maker : TreasureMaker = new TreasureMaker();
+		maker.makeRandomTreasure(pos);
 	}
 
 
