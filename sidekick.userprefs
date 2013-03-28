@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DoorController.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\DoorController.js">
     <Files>
-      <File FileName="Assets\Scripts\RoomController.js" Line="20" Column="24" />
-      <File FileName="Assets\Scripts\DoorController.js" Line="44" Column="5" />
+      <File FileName="Assets\scripts\BehaviorImplNPC.js" Line="91" Column="11" />
+      <File FileName="Assets\scripts\DoorController.js" Line="30" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
