@@ -1,9 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\DoorController.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\SidekickSpells.js">
     <Files>
-      <File FileName="Assets\scripts\BehaviorImplNPC.js" Line="91" Column="11" />
-      <File FileName="Assets\scripts\DoorController.js" Line="30" Column="27" />
+      <File FileName="Assets\scripts\Animation\Character Animations\HeroAnimation.js" Line="111" Column="32" />
+      <File FileName="Assets\scripts\Animation\EnemyAnimation.js" Line="11" Column="118" />
+      <File FileName="Assets\scripts\Animation\SpriteAnimation.js" Line="16" Column="41" />
+      <File FileName="Assets\scripts\Animation\EnemyAnimationVars.js" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Animation\Character Animations\SidekickAnimation.js" Line="25" Column="43" />
+      <File FileName="Assets\scripts\Combat.js" Line="87" Column="2" />
+      <File FileName="Assets\scripts\Behavior.js" Line="1" Column="1" />
+      <File FileName="Assets\scripts\FaceDirection.js" Line="71" Column="1" />
+      <File FileName="Assets\scripts\RoomController.js" Line="13" Column="1" />
+      <File FileName="Assets\scripts\SidekickSpells.js" Line="22" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
